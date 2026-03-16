@@ -1,0 +1,24 @@
+services:
+  mysql:
+     image: mysql:latest
+     container_name: mysql_server
+     restart: always
+     environment:
+       MYSQL_ROOT_PASSWORD: chammy
+       MYSQL_DATABASE: pract3
+       MYSQL_USER: samuel
+       MYSQL_PASSWORD: chammy
+     ports:
+      - "3306:3306"
+
+     volumes:
+         - mysql_data:/var/lib/mysql
+     networks: 
+        - mysql_network
+volumes:
+   mysql_data: 
+    driver: local
+
+networks:
+    mysql_network:
+     driver: bridge
