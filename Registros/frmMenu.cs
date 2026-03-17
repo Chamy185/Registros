@@ -21,5 +21,11 @@ namespace Registros
             frmAlumnos alumnos = new frmAlumnos();
             alumnos.ShowDialog();
         }
+
+        private void asistenciaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmAsistencias asistencias = new frmAsistencias();
+            asistencias.ShowDialog();
+        }
     }
 }

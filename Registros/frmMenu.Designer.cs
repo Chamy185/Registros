@@ -55,6 +55,7 @@
             asistenciaToolStripMenuItem.Name = "asistenciaToolStripMenuItem";
             asistenciaToolStripMenuItem.Size = new Size(72, 20);
             asistenciaToolStripMenuItem.Text = "Asistencia";
+            asistenciaToolStripMenuItem.Click += asistenciaToolStripMenuItem_Click;
             // 
             // frmMenu
             // 
