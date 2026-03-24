@@ -30,6 +30,7 @@
         {
             components = new System.ComponentModel.Container();
             spcAsistencias = new SplitContainer();
+            btnRegistros = new Button();
             btnAsistencia = new Button();
             txtRegistro = new TextBox();
             label2 = new Label();
@@ -38,7 +39,6 @@
             dgvAsistencias = new DataGridView();
             cmsData = new ContextMenuStrip(components);
             eliminarToolStripMenuItem = new ToolStripMenuItem();
-            btnRegistros = new Button();
             ((System.ComponentModel.ISupportInitialize)spcAsistencias).BeginInit();
             spcAsistencias.Panel1.SuspendLayout();
             spcAsistencias.Panel2.SuspendLayout();
@@ -71,6 +71,17 @@
             spcAsistencias.TabIndex = 1;
             spcAsistencias.SplitterMoved += splitContainer1_SplitterMoved;
             // 
+            // btnRegistros
+            // 
+            btnRegistros.Font = new Font("Times New Roman", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnRegistros.Location = new Point(351, 42);
+            btnRegistros.Name = "btnRegistros";
+            btnRegistros.Size = new Size(99, 29);
+            btnRegistros.TabIndex = 6;
+            btnRegistros.Text = "Registros";
+            btnRegistros.UseVisualStyleBackColor = true;
+            btnRegistros.Click += btnRegistros_Click;
+            // 
             // btnAsistencia
             // 
             btnAsistencia.Font = new Font("Times New Roman", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
@@ -89,6 +100,7 @@
             txtRegistro.Name = "txtRegistro";
             txtRegistro.Size = new Size(292, 29);
             txtRegistro.TabIndex = 4;
+            txtRegistro.KeyDown += txtRegistro_KeyDown;
             // 
             // label2
             // 
@@ -118,6 +130,7 @@
             dtpAlumnos.Name = "dtpAlumnos";
             dtpAlumnos.Size = new Size(294, 29);
             dtpAlumnos.TabIndex = 1;
+            dtpAlumnos.ValueChanged += dtpAlumnos_ValueChanged;
             // 
             // dgvAsistencias
             // 
@@ -145,17 +158,6 @@
             eliminarToolStripMenuItem.Text = "Eliminar";
             eliminarToolStripMenuItem.Click += eliminarToolStripMenuItem_Click;
             // 
-            // btnRegistros
-            // 
-            btnRegistros.Font = new Font("Times New Roman", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnRegistros.Location = new Point(351, 42);
-            btnRegistros.Name = "btnRegistros";
-            btnRegistros.Size = new Size(99, 29);
-            btnRegistros.TabIndex = 6;
-            btnRegistros.Text = "Registros";
-            btnRegistros.UseVisualStyleBackColor = true;
-            btnRegistros.Click += btnRegistros_Click;
-            // 
             // frmAsistencias
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -163,7 +165,7 @@
             ClientSize = new Size(800, 450);
             Controls.Add(spcAsistencias);
             Name = "frmAsistencias";
-            Text = "Asistencias";
+            Text = "cdcd";
             Activated += frmAsistencias_Activated;
             spcAsistencias.Panel1.ResumeLayout(false);
             spcAsistencias.Panel1.PerformLayout();
