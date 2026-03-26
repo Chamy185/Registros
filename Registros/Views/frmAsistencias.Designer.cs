@@ -39,12 +39,17 @@
             dgvAsistencias = new DataGridView();
             cmsData = new ContextMenuStrip(components);
             eliminarToolStripMenuItem = new ToolStripMenuItem();
+            rdbGrupoA = new RadioButton();
+            rdbGrupoB = new RadioButton();
+            rdbGrupoC = new RadioButton();
+            gpbGrupos = new GroupBox();
             ((System.ComponentModel.ISupportInitialize)spcAsistencias).BeginInit();
             spcAsistencias.Panel1.SuspendLayout();
             spcAsistencias.Panel2.SuspendLayout();
             spcAsistencias.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvAsistencias).BeginInit();
             cmsData.SuspendLayout();
+            gpbGrupos.SuspendLayout();
             SuspendLayout();
             // 
             // spcAsistencias
@@ -56,6 +61,7 @@
             // 
             // spcAsistencias.Panel1
             // 
+            spcAsistencias.Panel1.Controls.Add(gpbGrupos);
             spcAsistencias.Panel1.Controls.Add(btnRegistros);
             spcAsistencias.Panel1.Controls.Add(btnAsistencia);
             spcAsistencias.Panel1.Controls.Add(txtRegistro);
@@ -158,6 +164,55 @@
             eliminarToolStripMenuItem.Text = "Eliminar";
             eliminarToolStripMenuItem.Click += eliminarToolStripMenuItem_Click;
             // 
+            // rdbGrupoA
+            // 
+            rdbGrupoA.AutoSize = true;
+            rdbGrupoA.Font = new Font("Times New Roman", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            rdbGrupoA.Location = new Point(21, 28);
+            rdbGrupoA.Name = "rdbGrupoA";
+            rdbGrupoA.Size = new Size(94, 25);
+            rdbGrupoA.TabIndex = 8;
+            rdbGrupoA.TabStop = true;
+            rdbGrupoA.Text = "Grupo A";
+            rdbGrupoA.UseVisualStyleBackColor = true;
+            // 
+            // rdbGrupoB
+            // 
+            rdbGrupoB.AutoSize = true;
+            rdbGrupoB.Font = new Font("Times New Roman", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            rdbGrupoB.Location = new Point(21, 62);
+            rdbGrupoB.Name = "rdbGrupoB";
+            rdbGrupoB.Size = new Size(94, 25);
+            rdbGrupoB.TabIndex = 9;
+            rdbGrupoB.TabStop = true;
+            rdbGrupoB.Text = "Grupo B";
+            rdbGrupoB.UseVisualStyleBackColor = true;
+            // 
+            // rdbGrupoC
+            // 
+            rdbGrupoC.AutoSize = true;
+            rdbGrupoC.Font = new Font("Times New Roman", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            rdbGrupoC.Location = new Point(21, 98);
+            rdbGrupoC.Name = "rdbGrupoC";
+            rdbGrupoC.Size = new Size(95, 25);
+            rdbGrupoC.TabIndex = 10;
+            rdbGrupoC.TabStop = true;
+            rdbGrupoC.Text = "Grupo C";
+            rdbGrupoC.UseVisualStyleBackColor = true;
+            // 
+            // gpbGrupos
+            // 
+            gpbGrupos.Controls.Add(rdbGrupoA);
+            gpbGrupos.Controls.Add(rdbGrupoC);
+            gpbGrupos.Controls.Add(rdbGrupoB);
+            gpbGrupos.Font = new Font("Times New Roman", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            gpbGrupos.Location = new Point(496, 32);
+            gpbGrupos.Name = "gpbGrupos";
+            gpbGrupos.Size = new Size(200, 129);
+            gpbGrupos.TabIndex = 11;
+            gpbGrupos.TabStop = false;
+            gpbGrupos.Text = "Seccion del Alumno";
+            // 
             // frmAsistencias
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -174,6 +229,8 @@
             spcAsistencias.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvAsistencias).EndInit();
             cmsData.ResumeLayout(false);
+            gpbGrupos.ResumeLayout(false);
+            gpbGrupos.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -189,5 +246,9 @@
         private ContextMenuStrip cmsData;
         private ToolStripMenuItem eliminarToolStripMenuItem;
         private Button btnRegistros;
+        private RadioButton rdbGrupoC;
+        private RadioButton rdbGrupoB;
+        private RadioButton rdbGrupoA;
+        private GroupBox gpbGrupos;
     }
 }

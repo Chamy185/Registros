@@ -74,7 +74,6 @@
             label2.Size = new Size(71, 21);
             label2.TabIndex = 2;
             label2.Text = "Nombre";
-
             // 
             // txtApPaterno
             // 
@@ -127,7 +126,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(296, 424);
+            ClientSize = new Size(296, 427);
             Controls.Add(btnAceptar);
             Controls.Add(txtApMaterno);
             Controls.Add(label4);
@@ -139,7 +138,6 @@
             Controls.Add(label1);
             Name = "frmAlumno";
             Text = "Datos Alumno";
-
             ResumeLayout(false);
             PerformLayout();
         }
