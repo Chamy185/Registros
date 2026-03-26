@@ -137,7 +137,7 @@
             Controls.Add(txtNoControl);
             Controls.Add(label1);
             Name = "frmAlumno";
-            Text = "Datos Alumno";
+            Text = "cd";
             ResumeLayout(false);
             PerformLayout();
         }

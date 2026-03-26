@@ -25,58 +25,23 @@ namespace Registros.Views
         {
 
         }
-        private void btnAsistencia_Click(object sender, EventArgs e)
-        {
-            int numC = Convert.ToInt32(txtRegistro.Text);
-            if (uptading == false)
-            {
-                bool resultado = dt.ejecutarComando(
-                    $"Insert into Registro (noControl,fecha) " +
-                    $"values ({numC},'{dtpAlumnos.Value:yyyy-MM-dd}')");
-
-                if (resultado)
-                {
-                    MessageBox.Show("Asistencia");
-                }
-                else
-                {
-                    MessageBox.Show("No de control no registrado");
-                }
-            }
-            else
-            {
-                bool resultado = dt.ejecutarComando(
-                    $"Update Registro set noControl={numC}, fecha='{dtpAlumnos.Value:yyyy-MM-dd}' " +
-                    $"where noControl={numC}");
-
-                if (resultado)
-                {
-                    MessageBox.Show("Registro actualizado correctamente");
-
-                }
-                else
-                {
-                    MessageBox.Show("Error al actualizar la información del registro");
-                }
-            }
-        }
 
         private void eliminarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (dgvAsistencias.CurrentRow != null)
             {
                 int noControl = Convert.ToInt32(dgvAsistencias.CurrentRow.Cells[0].Value);
-                DateTime fecha = Convert.ToDateTime(dgvAsistencias.CurrentRow.Cells[1].Value);
+                DateTime fecha1 = Convert.ToDateTime(dgvAsistencias.CurrentRow.Cells[1].Value);
 
-                string fechaNormal = fecha.ToString("yyyy-MM-dd");
+                string fecha2 = fecha1.ToString("yyyy-MM-dd");
 
                 if (MessageBox.Show("Deseas eliminar el registro del alumno con NoControl: "
-                    + noControl + " en la fecha: " + fechaNormal,
+                    + noControl + " en la fecha: " + fecha2,
                     "Sistema", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
                     == DialogResult.Yes)
                 {
                     bool f = datos.ejecutarComando(
-                        $"DELETE FROM Registro WHERE noControl={noControl} AND fecha='{fechaNormal}'");
+                        $"DELETE FROM Registro WHERE noControl={noControl} AND fecha='{fecha2}'");
 
                     if (f)
                     {
@@ -90,29 +55,7 @@ namespace Registros.Views
             }
         }
 
-        private void btnRegistros_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                string fecha = dtpAlumnos.Value.ToString("yyyy-MM-dd");
 
-                ds = datos.ejecutar($"SELECT noControl, fecha FROM Registro WHERE fecha='{fecha}'");
-
-                if (ds != null && ds.Tables.Count > 0)
-                {
-                    dgvAsistencias.DataSource = ds.Tables[0];
-                }
-                else
-                {
-                    dgvAsistencias.DataSource = null;
-                    MessageBox.Show("No hay registros para esta fecha.", "Sistema");
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Ocurrió un error: " + ex.Message, "Sistema");
-            }
-        }
 
         private void frmAsistencias_Activated(object sender, EventArgs e)
         {
@@ -130,6 +73,8 @@ namespace Registros.Views
             }
         }
 
+        //Enter para registrar
+        //Si seleccionas diferente grupo tiene que seleccionar el cursor al text box para que detectar el numero de control
         private void txtRegistro_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -138,12 +83,32 @@ namespace Registros.Views
                 {
                     int numC = Convert.ToInt32(txtRegistro.Text);
                     string fecha = dtpAlumnos.Value.ToString("yyyy-MM-dd");
+                    String grupo = "";
+                    if (rdbGrupoA.Checked)
+                    {
+                        grupo = "Grupo A";
+                    }
+                    else if (rdbGrupoB.Checked)
+                    {
+                        grupo = "Grupo B";
+                    }
+                    else if (rdbGrupoC.Checked)
+                    {
+                        grupo = "Grupo C";
+                    }
+
+
+                    if (grupo == "")
+                    {
+                        MessageBox.Show("Selecciona el grupo del Alumno");
+                        return;
+                    }
 
                     if (uptading == false)
                     {
                         bool resultado = dt.ejecutarComando(
-                            $"Insert into Registro (noControl,fecha) " +
-                            $"values ({numC},'{fecha}')");
+                            $"Insert into Registro (noControl,fecha,grupo) " +
+                            $"values ({numC},'{fecha}','{grupo}')");
 
                         if (resultado)
                         {
@@ -161,7 +126,7 @@ namespace Registros.Views
                     else
                     {
                         bool resultado = dt.ejecutarComando(
-                            $"Update Registro set noControl={numC}, fecha='{dtpAlumnos.Value:yyyy-MM-dd}' " +
+                            $"Update Registro set noControl={numC}, fecha='{dtpAlumnos.Value:yyyy-MM-dd}', grupo='{grupo}' " +
                             $"where noControl={numC}");
 
                         if (resultado)
@@ -178,18 +143,34 @@ namespace Registros.Views
                 {
                     MessageBox.Show("Ingresa un número válido");
                 }
-
+                //Para que no moleste el sonido de Windows
                 e.SuppressKeyPress = true;
             }
         }
 
         private void dtpAlumnos_ValueChanged(object sender, EventArgs e)
         {
-             try
+            try
             {
                 string fecha = dtpAlumnos.Value.ToString("yyyy-MM-dd");
 
-                ds = datos.ejecutar($"SELECT noControl, fecha FROM Registro WHERE fecha='{fecha}'");
+                string grupo = "";
+
+                if (rdbGrupoA.Checked)
+                    grupo = "Grupo A";
+                else if (rdbGrupoB.Checked)
+                    grupo = "Grupo B";
+                else if (rdbGrupoC.Checked)
+                    grupo = "Grupo C";
+
+                if (grupo == "")
+                {
+                    MessageBox.Show("Selecciona un grupo");
+                    return;
+                }
+
+
+                ds = datos.ejecutar($"SELECT noControl, grupo, fecha FROM Registro WHERE fecha='{fecha}'  AND grupo='{grupo}'  ORDER BY grupo");
 
                 if (ds != null && ds.Tables.Count > 0)
                 {
@@ -207,6 +188,20 @@ namespace Registros.Views
             }
         }
 
+        //llamamos el metodo de cambiar la fecha para que se actualice el datagridview al cambiar de grupo
+        private void rdbGrupoA_CheckedChanged(object sender, EventArgs e)
+        {
+            dtpAlumnos_ValueChanged(null, null);
+        }
 
+        private void rdbGrupoB_CheckedChanged(object sender, EventArgs e)
+        {
+            dtpAlumnos_ValueChanged(null, null);
+        }
+
+        private void rdbGrupoC_CheckedChanged(object sender, EventArgs e)
+        {
+            dtpAlumnos_ValueChanged(null, null);
+        }
     }
 }

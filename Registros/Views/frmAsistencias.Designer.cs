@@ -30,8 +30,10 @@
         {
             components = new System.ComponentModel.Container();
             spcAsistencias = new SplitContainer();
-            btnRegistros = new Button();
-            btnAsistencia = new Button();
+            gpbGrupos = new GroupBox();
+            rdbGrupoA = new RadioButton();
+            rdbGrupoC = new RadioButton();
+            rdbGrupoB = new RadioButton();
             txtRegistro = new TextBox();
             label2 = new Label();
             label1 = new Label();
@@ -39,17 +41,13 @@
             dgvAsistencias = new DataGridView();
             cmsData = new ContextMenuStrip(components);
             eliminarToolStripMenuItem = new ToolStripMenuItem();
-            rdbGrupoA = new RadioButton();
-            rdbGrupoB = new RadioButton();
-            rdbGrupoC = new RadioButton();
-            gpbGrupos = new GroupBox();
             ((System.ComponentModel.ISupportInitialize)spcAsistencias).BeginInit();
             spcAsistencias.Panel1.SuspendLayout();
             spcAsistencias.Panel2.SuspendLayout();
             spcAsistencias.SuspendLayout();
+            gpbGrupos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvAsistencias).BeginInit();
             cmsData.SuspendLayout();
-            gpbGrupos.SuspendLayout();
             SuspendLayout();
             // 
             // spcAsistencias
@@ -62,8 +60,6 @@
             // spcAsistencias.Panel1
             // 
             spcAsistencias.Panel1.Controls.Add(gpbGrupos);
-            spcAsistencias.Panel1.Controls.Add(btnRegistros);
-            spcAsistencias.Panel1.Controls.Add(btnAsistencia);
             spcAsistencias.Panel1.Controls.Add(txtRegistro);
             spcAsistencias.Panel1.Controls.Add(label2);
             spcAsistencias.Panel1.Controls.Add(label1);
@@ -77,27 +73,57 @@
             spcAsistencias.TabIndex = 1;
             spcAsistencias.SplitterMoved += splitContainer1_SplitterMoved;
             // 
-            // btnRegistros
+            // gpbGrupos
             // 
-            btnRegistros.Font = new Font("Times New Roman", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnRegistros.Location = new Point(351, 42);
-            btnRegistros.Name = "btnRegistros";
-            btnRegistros.Size = new Size(99, 29);
-            btnRegistros.TabIndex = 6;
-            btnRegistros.Text = "Registros";
-            btnRegistros.UseVisualStyleBackColor = true;
-            btnRegistros.Click += btnRegistros_Click;
+            gpbGrupos.Controls.Add(rdbGrupoA);
+            gpbGrupos.Controls.Add(rdbGrupoC);
+            gpbGrupos.Controls.Add(rdbGrupoB);
+            gpbGrupos.Font = new Font("Times New Roman", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            gpbGrupos.Location = new Point(359, 32);
+            gpbGrupos.Name = "gpbGrupos";
+            gpbGrupos.Size = new Size(200, 129);
+            gpbGrupos.TabIndex = 11;
+            gpbGrupos.TabStop = false;
+            gpbGrupos.Text = "Seccion del Alumno";
             // 
-            // btnAsistencia
+            // rdbGrupoA
             // 
-            btnAsistencia.Font = new Font("Times New Roman", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnAsistencia.Location = new Point(351, 132);
-            btnAsistencia.Name = "btnAsistencia";
-            btnAsistencia.Size = new Size(99, 29);
-            btnAsistencia.TabIndex = 5;
-            btnAsistencia.Text = "Asistencia";
-            btnAsistencia.UseVisualStyleBackColor = true;
-            btnAsistencia.Click += btnAsistencia_Click;
+            rdbGrupoA.AutoSize = true;
+            rdbGrupoA.Font = new Font("Times New Roman", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            rdbGrupoA.Location = new Point(21, 28);
+            rdbGrupoA.Name = "rdbGrupoA";
+            rdbGrupoA.Size = new Size(94, 25);
+            rdbGrupoA.TabIndex = 8;
+            rdbGrupoA.TabStop = true;
+            rdbGrupoA.Text = "Grupo A";
+            rdbGrupoA.UseVisualStyleBackColor = true;
+            rdbGrupoA.CheckedChanged += rdbGrupoA_CheckedChanged;
+            // 
+            // rdbGrupoC
+            // 
+            rdbGrupoC.AutoSize = true;
+            rdbGrupoC.Font = new Font("Times New Roman", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            rdbGrupoC.Location = new Point(21, 98);
+            rdbGrupoC.Name = "rdbGrupoC";
+            rdbGrupoC.Size = new Size(95, 25);
+            rdbGrupoC.TabIndex = 10;
+            rdbGrupoC.TabStop = true;
+            rdbGrupoC.Text = "Grupo C";
+            rdbGrupoC.UseVisualStyleBackColor = true;
+            rdbGrupoC.CheckedChanged += rdbGrupoC_CheckedChanged;
+            // 
+            // rdbGrupoB
+            // 
+            rdbGrupoB.AutoSize = true;
+            rdbGrupoB.Font = new Font("Times New Roman", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            rdbGrupoB.Location = new Point(21, 62);
+            rdbGrupoB.Name = "rdbGrupoB";
+            rdbGrupoB.Size = new Size(94, 25);
+            rdbGrupoB.TabIndex = 9;
+            rdbGrupoB.TabStop = true;
+            rdbGrupoB.Text = "Grupo B";
+            rdbGrupoB.UseVisualStyleBackColor = true;
+            rdbGrupoB.CheckedChanged += rdbGrupoB_CheckedChanged;
             // 
             // txtRegistro
             // 
@@ -164,55 +190,6 @@
             eliminarToolStripMenuItem.Text = "Eliminar";
             eliminarToolStripMenuItem.Click += eliminarToolStripMenuItem_Click;
             // 
-            // rdbGrupoA
-            // 
-            rdbGrupoA.AutoSize = true;
-            rdbGrupoA.Font = new Font("Times New Roman", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            rdbGrupoA.Location = new Point(21, 28);
-            rdbGrupoA.Name = "rdbGrupoA";
-            rdbGrupoA.Size = new Size(94, 25);
-            rdbGrupoA.TabIndex = 8;
-            rdbGrupoA.TabStop = true;
-            rdbGrupoA.Text = "Grupo A";
-            rdbGrupoA.UseVisualStyleBackColor = true;
-            // 
-            // rdbGrupoB
-            // 
-            rdbGrupoB.AutoSize = true;
-            rdbGrupoB.Font = new Font("Times New Roman", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            rdbGrupoB.Location = new Point(21, 62);
-            rdbGrupoB.Name = "rdbGrupoB";
-            rdbGrupoB.Size = new Size(94, 25);
-            rdbGrupoB.TabIndex = 9;
-            rdbGrupoB.TabStop = true;
-            rdbGrupoB.Text = "Grupo B";
-            rdbGrupoB.UseVisualStyleBackColor = true;
-            // 
-            // rdbGrupoC
-            // 
-            rdbGrupoC.AutoSize = true;
-            rdbGrupoC.Font = new Font("Times New Roman", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            rdbGrupoC.Location = new Point(21, 98);
-            rdbGrupoC.Name = "rdbGrupoC";
-            rdbGrupoC.Size = new Size(95, 25);
-            rdbGrupoC.TabIndex = 10;
-            rdbGrupoC.TabStop = true;
-            rdbGrupoC.Text = "Grupo C";
-            rdbGrupoC.UseVisualStyleBackColor = true;
-            // 
-            // gpbGrupos
-            // 
-            gpbGrupos.Controls.Add(rdbGrupoA);
-            gpbGrupos.Controls.Add(rdbGrupoC);
-            gpbGrupos.Controls.Add(rdbGrupoB);
-            gpbGrupos.Font = new Font("Times New Roman", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            gpbGrupos.Location = new Point(496, 32);
-            gpbGrupos.Name = "gpbGrupos";
-            gpbGrupos.Size = new Size(200, 129);
-            gpbGrupos.TabIndex = 11;
-            gpbGrupos.TabStop = false;
-            gpbGrupos.Text = "Seccion del Alumno";
-            // 
             // frmAsistencias
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -220,17 +197,17 @@
             ClientSize = new Size(800, 450);
             Controls.Add(spcAsistencias);
             Name = "frmAsistencias";
-            Text = "cdcd";
+            Text = "Asistencias";
             Activated += frmAsistencias_Activated;
             spcAsistencias.Panel1.ResumeLayout(false);
             spcAsistencias.Panel1.PerformLayout();
             spcAsistencias.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)spcAsistencias).EndInit();
             spcAsistencias.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dgvAsistencias).EndInit();
-            cmsData.ResumeLayout(false);
             gpbGrupos.ResumeLayout(false);
             gpbGrupos.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvAsistencias).EndInit();
+            cmsData.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -242,10 +219,8 @@
         private TextBox txtRegistro;
         private Label label2;
         private DataGridView dgvAsistencias;
-        private Button btnAsistencia;
         private ContextMenuStrip cmsData;
         private ToolStripMenuItem eliminarToolStripMenuItem;
-        private Button btnRegistros;
         private RadioButton rdbGrupoC;
         private RadioButton rdbGrupoB;
         private RadioButton rdbGrupoA;
